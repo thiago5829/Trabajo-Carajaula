@@ -1,14 +1,10 @@
 package logica;
-
+import logica.figurita;
 public class figuritas {
-	private String nombre_jug;
-	private int numero_figu;
-	private String sele;
-	public figuritas (String nomj, int numf, String selec) {
-		this.nombre_jug=nomj;
-		this.numero_figu=numf;
-		this.sele=selec;
+		figurita[] pegadas = new figurita[979];
+
 		
-	}
-	}
+}
+
+	
 
