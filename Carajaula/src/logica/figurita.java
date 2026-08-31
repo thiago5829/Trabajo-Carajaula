@@ -17,6 +17,22 @@ public class figurita {
 	public void setPegada(boolean pegada) {
 		this.pegada = pegada;
 	}
+
+	public int getNumero_figu() {
+		return numero_figu;
+	}
+
+	public void setNumero_figu(int numero_figu) {
+		this.numero_figu = numero_figu;
+	}
+
+	public String getSele() {
+		return sele;
+	}
+
+	public void setSele(String sele) {
+		this.sele = sele;
+	}
 	
 	}
 	
