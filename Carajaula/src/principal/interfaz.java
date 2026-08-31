@@ -48,7 +48,7 @@ public class interfaz {
 		op2.setBounds(50, 175, 200, 50);
 		ventana.add(op2);
 		op2.addActionListener(e->{
-			System.out.println("elgiste agregar una figurita");
+			System.out.println("elgiste agregar una figuritas");
 		});
 	}
 }	
