@@ -5,11 +5,18 @@ public class figurita {
 	private boolean pegada;
 	
 	public figurita (int numf, String selec) {
-
 		this.pegada=false;
 		this.numero_figu=numf;
 		this.sele=selec;
-		}
+	}
+	
+	public boolean isPegada() {
+		return pegada;
+	}
+
+	public void setPegada(boolean pegada) {
+		this.pegada = pegada;
+	}
 
 	public int getNumero_figu() {
 		return numero_figu;
@@ -26,13 +33,6 @@ public class figurita {
 	public void setSele(String sele) {
 		this.sele = sele;
 	}
-
-	public boolean isPegada() {
-		return pegada;
-	}
-
-	public void setPegada(boolean pegada) {
-		this.pegada = pegada;
-	}
 	
 	}
+	
