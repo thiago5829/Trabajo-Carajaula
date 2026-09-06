@@ -1,22 +1,22 @@
 package logica;
 
 public class Usuario {
-	private char nomusuarios;
-	private char contraseña;
-	public Usuario (char user, char contra) {
+	private String nomusuarios;
+	private String contraseña;
+	public Usuario (String user, String contra) {
 		this.nomusuarios=user;
 		this.contraseña=contra;
 	}
-	public char getUsuarios() {
+	public String getUsuarios() {
 		return nomusuarios;
 	}
-	public void setUsuarios(char usuarios) {
+	public void setUsuarios(String usuarios) {
 		this.nomusuarios = usuarios;
 	}
-	public char getContraseña() {
+	public String getContraseña() {
 		return contraseña;
 	}
-	public void setContraseña(char contraseña) {
+	public void setContraseña(String contraseña) {
 		this.contraseña = contraseña;
 	}
 	
