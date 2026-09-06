@@ -1,5 +1,9 @@
 package principal;
+import java.awt.Window;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.*;
+import logica.usuarios;
 public class interfaz {
 	JFrame ventana;
 	
@@ -7,36 +11,76 @@ public class interfaz {
 		ventana = new JFrame();
 	}
 	public void ventanaprincipal() {
+		//Ventana
 		ventana.setTitle("Gestion de figuritas");
 		ventana.setSize(750,500);
 		ventana.setLayout(null);
 		ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		ventana.setLocationRelativeTo(null);
 		ventana.setVisible(true);
-	JLabel iniciasion = new JLabel("Antes de empezar Registrate o Inicia Sesión");
-	iniciasion.setBounds(235,110,400,100);
-	ventana.add(iniciasion);
-	JLabel titulo = new JLabel("GESTIÓN DE FIGURITAS");
-	titulo.setBounds(285,25,400,100);
-	ventana.add(titulo);
-	JButton iniciar_sesion = new JButton ("Iniciar Sesión");
-	iniciar_sesion.setBounds(375,350,150,25);
-	ventana.add(iniciar_sesion);
-	JButton registrarse = new JButton ("Registrarse");
-	registrarse.setBounds(215,350,125,25);
-	ventana.add(registrarse);
-	
+		//Imagen	
+		//Titulo
+		JLabel iniciasion = new JLabel("Antes de empezar Registrate o Inicia Sesión");
+		iniciasion.setBounds(235,110,400,100);
+		ventana.add(iniciasion);
+		JLabel titulo = new JLabel("GESTIÓN DE FIGURITAS");
+		titulo.setBounds(285,25,400,100);
+		ventana.add(titulo);
+		//Campo de texto Usuario
+		JTextField zonausuario = new JTextField();
+		zonausuario.setBounds(215,215,150,30);
+		ventana.add(zonausuario);
+		JTextField zonacontra = new JTextField();
+		zonacontra.setBounds(215,275,150,30);
+		ventana.add(zonacontra);
+		//Boton iniciar sesion
+		JButton iniciar_sesion = new JButton ("Iniciar Sesión");
+		iniciar_sesion.setBounds(375,350,115,25);
+		ventana.add(iniciar_sesion);
+		iniciar_sesion.addActionListener(new ActionListener() {
+			public void actionPerformed (ActionEvent e) {
+				String usuario = zonausuario.getText();
+				String contra = zonacontra.getText();
+				System.out.println("El usuario es: "+ usuario);
+				System.out.println("La contra es: "+ contra);
+				if (usuario.equals("Juan")) {
+					if (contra.equals("pepito123")){
+						JOptionPane.showMessageDialog(iniciar_sesion, "Iniciando Sesión con el usuario: "+ usuario);
+					}else {
+						JOptionPane.showMessageDialog(iniciar_sesion, "Contraseña no valida");
+					}
+				}else {
+					JOptionPane.showMessageDialog(iniciar_sesion, "Usuario no registrado");
+				}
+		}
+	});
+		//Boton registro
+			JButton registrarse = new JButton ("Registrarse");
+			registrarse.setBounds(215,350,110,25);
+			ventana.add(registrarse);
+			registrarse.addActionListener(new ActionListener() {
+				public void actionPerformed (ActionEvent e) {
+					String usuario = zonausuario.getText();
+					String contra = zonacontra.getText();
+					System.out.println("El usuario es: "+ usuario);
+					System.out.println("La contra es: "+ contra);
+				//for
+		}
+	});
 	}
 	public void ventana2() {
+		//Ventana
 		ventana.setTitle("Opciones");
 		ventana.setSize(750,500);
 		ventana.setLayout(null);
 		ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		ventana.setLocationRelativeTo(null);
-		ventana.setVisible(true);
+		ventana.setVisible(false);
+		//Titulo
 		JLabel titulo = new JLabel("ELIGE UNA OPCIÓN");
 		titulo.setBounds(285,25,400,100);
 		ventana.add(titulo);
+		//Botones
 		JRadioButton op1 = new JRadioButton ("¿Que figuritas tengo?", true);
 		op1.setBounds(50, 125, 200, 50);
 		ventana.add(op1);
