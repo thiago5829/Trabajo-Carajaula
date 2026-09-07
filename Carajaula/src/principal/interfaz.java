@@ -20,11 +20,18 @@ public class interfaz {
 		//Imagen	
 		//Titulo
 		JLabel iniciasion = new JLabel("Antes de empezar Registrate o Inicia Sesión");
-		iniciasion.setBounds(235,110,400,100);
+		iniciasion.setBounds(225,125,270,20);
 		ventana.add(iniciasion);
 		JLabel titulo = new JLabel("GESTIÓN DE FIGURITAS");
-		titulo.setBounds(285,25,400,100);
+		titulo.setBounds(285,25,150,20);
 		ventana.add(titulo);
+		//subtitulo 
+		JLabel UsuarioText = new JLabel ("Usuario:");
+		UsuarioText.setBounds(217, 189, 100, 20);
+		ventana.add(UsuarioText);
+		JLabel ContraText = new JLabel ("Contraseña:");
+		ContraText.setBounds(217, 250, 100, 20);
+		ventana.add(ContraText);
 		//Campo de texto Usuario
 		JTextField zonausuario = new JTextField();
 		zonausuario.setBounds(215,215,150,30);
