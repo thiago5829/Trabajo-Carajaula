@@ -17,7 +17,7 @@ public class interfaz {
 		ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		ventana.setLocationRelativeTo(null);
 		ventana.setVisible(true);
-		//Imagen	
+		//Imagen
 		//Titulo
 		JLabel iniciasion = new JLabel("Antes de empezar Registrate o Inicia Sesión");
 		iniciasion.setBounds(225,125,270,20);
