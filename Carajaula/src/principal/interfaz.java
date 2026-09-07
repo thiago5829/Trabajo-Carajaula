@@ -6,7 +6,6 @@ import javax.swing.*;
 import logica.usuarios;
 public class interfaz {
 	JFrame ventana;
-	
 	public interfaz() {
 		ventana = new JFrame();
 	}
@@ -45,7 +44,7 @@ public class interfaz {
 				System.out.println("La contra es: "+ contra);
 				if (usuario.equals("Juan")) {
 					if (contra.equals("pepito123")){
-						JOptionPane.showMessageDialog(iniciar_sesion, "Iniciando Sesión con el usuario: "+ usuario);
+						ventana.setVisible(false);
 					}else {
 						JOptionPane.showMessageDialog(iniciar_sesion, "Contraseña no valida");
 					}
@@ -64,7 +63,7 @@ public class interfaz {
 					String contra = zonacontra.getText();
 					System.out.println("El usuario es: "+ usuario);
 					System.out.println("La contra es: "+ contra);
-				//for
+				//if
 		}
 	});
 	}
