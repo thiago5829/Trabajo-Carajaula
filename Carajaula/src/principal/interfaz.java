@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 import logica.usuarios;
+import java.awt.Image;
 public class interfaz {
 	JFrame ventana;
 	public interfaz() {
@@ -16,8 +17,13 @@ public class interfaz {
 		ventana.setLayout(null);
 		ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		ventana.setLocationRelativeTo(null);
-		ventana.setVisible(true);
 		//Imagen
+		ImageIcon imagenOriginal = new ImageIcon(getClass().getResource("/img/logoCara.png"));
+		Image imagenEscalada = imagenOriginal.getImage().getScaledInstance(75, 75, Image.SCALE_SMOOTH);
+		ImageIcon imagenFinal = new ImageIcon(imagenEscalada);
+		JLabel etiquetaLogo = new JLabel(imagenFinal);
+		etiquetaLogo.setBounds(305, 50, 75, 75);
+		ventana.add(etiquetaLogo);
 		//Titulo
 		JLabel iniciasion = new JLabel("Antes de empezar Registrate o Inicia Sesión");
 		iniciasion.setBounds(225,125,270,20);
@@ -52,6 +58,8 @@ public class interfaz {
 				if (usuario.equals("Juan")) {
 					if (contra.equals("pepito123")){
 						ventana.setVisible(false);
+						interfaz nuevaVentana = new interfaz();
+						nuevaVentana.ventana2(true);
 					}else {
 						JOptionPane.showMessageDialog(iniciar_sesion, "Contraseña no valida");
 					}
@@ -73,15 +81,16 @@ public class interfaz {
 				//if
 		}
 	});
+			ventana.setVisible(true);
 	}
-	public void ventana2() {
+	public void ventana2(boolean visible){
 		//Ventana
 		ventana.setTitle("Opciones");
 		ventana.setSize(750,500);
 		ventana.setLayout(null);
 		ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		ventana.setLocationRelativeTo(null);
-		ventana.setVisible(false);
+		ventana.setVisible(visible);
 		//Titulo
 		JLabel titulo = new JLabel("ELIGE UNA OPCIÓN");
 		titulo.setBounds(285,25,400,100);
