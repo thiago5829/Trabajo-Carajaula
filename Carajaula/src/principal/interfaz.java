@@ -55,6 +55,7 @@ public class interfaz {
 				String contra = zonacontra.getText();
 				System.out.println("El usuario es: "+ usuario);
 				System.out.println("La contra es: "+ contra);
+			//Buscar usuario y contraseña en el Array de Usuario
 				if (usuario.equals("Juan")) {
 					if (contra.equals("pepito123")){
 						ventana.setVisible(false);
