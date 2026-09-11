@@ -1,19 +1,12 @@
 package principal;
-
 import java.util.Scanner;
-
-import logica.Usuario;
+import logica.usuarios;
 public class Main {
 	public static void main(String[] args) {
+		usuarios listaUsuarios = new usuarios();
+		listaUsuarios.agregar_usuario("Thiago", "Admin123");
 		Scanner entrada = new Scanner(System.in);
 		interfaz v1= new interfaz();
 		v1.ventanaprincipal();
-		System.out.println("1-registrarse 2-Iniciar Sesion");
-		int numero = entrada.nextInt();
-		if (numero<2) {
-			System.out.println("elegiste registrarte");
-		}else {
-			System.out.println("elegiste iniciar sesion");
 		}
-	}
 	}

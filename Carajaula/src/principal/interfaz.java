@@ -4,9 +4,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 import logica.usuarios;
+import logica.Usuario;
 import java.awt.Image;
 public class interfaz {
 	JFrame ventana;
+	usuarios listaUsuarios = new usuarios();
 	public interfaz() {
 		ventana = new JFrame();
 	}
@@ -53,19 +55,16 @@ public class interfaz {
 			public void actionPerformed (ActionEvent e) {
 				String usuario = zonausuario.getText();
 				String contra = zonacontra.getText();
-				System.out.println("El usuario es: "+ usuario);
-				System.out.println("La contra es: "+ contra);
 			//Buscar usuario y contraseña en el Array de Usuario
-				if (usuario.equals("Juan")) {
-					if (contra.equals("pepito123")){
-						ventana.setVisible(false);
-						interfaz nuevaVentana = new interfaz();
-						nuevaVentana.ventana2(true);
-					}else {
-						JOptionPane.showMessageDialog(iniciar_sesion, "Contraseña no valida");
-					}
-				}else {
+				Usuario u = listaUsuarios.buscarUsuario(usuario);
+				if (u == null) {
 					JOptionPane.showMessageDialog(iniciar_sesion, "Usuario no registrado");
+				} else if (!u.getContraseña().equals(contra)) {
+					JOptionPane.showMessageDialog(iniciar_sesion, "Contraseña no valida");
+				} else {
+					ventana.setVisible(false);
+					interfaz nuevaVentana = new interfaz();
+					nuevaVentana.ventana2(true);
 				}
 		}
 	});
@@ -77,9 +76,8 @@ public class interfaz {
 				public void actionPerformed (ActionEvent e) {
 					String usuario = zonausuario.getText();
 					String contra = zonacontra.getText();
-					System.out.println("El usuario es: "+ usuario);
-					System.out.println("La contra es: "+ contra);
-				//if
+					listaUsuarios.agregar_usuario(usuario, contra);
+					JOptionPane.showMessageDialog(registrarse, "Usuario registrado con éxito");
 		}
 	});
 			ventana.setVisible(true);
