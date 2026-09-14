@@ -42,10 +42,10 @@ public class interfaz {
 		ventana.add(ContraText);
 		//Campo de texto Usuario
 		JTextField zonausuario = new JTextField();
-		zonausuario.setBounds(215,215,150,30);
+		zonausuario.setBounds(215,215,200,30);
 		ventana.add(zonausuario);
 		JTextField zonacontra = new JTextField();
-		zonacontra.setBounds(215,275,150,30);
+		zonacontra.setBounds(215,275,200,30);
 		ventana.add(zonacontra);
 		//Boton iniciar sesion
 		JButton iniciar_sesion = new JButton ("Iniciar Sesión");
@@ -62,9 +62,8 @@ public class interfaz {
 				} else if (!u.getContraseña().equals(contra)) {
 					JOptionPane.showMessageDialog(iniciar_sesion, "Contraseña no valida");
 				} else {
-					ventana.setVisible(false);
-					interfaz nuevaVentana = new interfaz();
-					nuevaVentana.ventana2(true);
+				    ventana.setVisible(false);
+				    ventana2(true, listaUsuarios, u);
 				}
 		}
 	});
@@ -82,7 +81,10 @@ public class interfaz {
 	});
 			ventana.setVisible(true);
 	}
-	public void ventana2(boolean visible){
+	public void ventana2(boolean visible, usuarios listaUsuarios, Usuario usuarioActivo) {
+		ventana.getContentPane().removeAll();
+	    ventana.revalidate();
+	    ventana.repaint();
 		//Ventana
 		ventana.setTitle("Opciones");
 		ventana.setSize(750,500);
@@ -95,17 +97,8 @@ public class interfaz {
 		titulo.setBounds(285,25,400,100);
 		ventana.add(titulo);
 		//Botones
-		JRadioButton op1 = new JRadioButton ("¿Que figuritas tengo?", true);
-		op1.setBounds(50, 125, 200, 50);
-		ventana.add(op1);
-		op1.addActionListener(e->{
-			System.out.println("elgiste ver tus figuritas");
-		});
-		JRadioButton op2 = new JRadioButton ("Agregar figurita", true);
-		op2.setBounds(50, 175, 200, 50);
-		ventana.add(op2);
-		op2.addActionListener(e->{
-			System.out.println("elgiste agregar una figurita");
-		});
+		JButton registrarse = new JButton ("¿QUE FIGURITA TENGO?");
+		registrarse.setBounds(75,170,175,25);
+		ventana.add(registrarse);
 	}
-}	
+	}

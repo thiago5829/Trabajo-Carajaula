@@ -3,6 +3,9 @@ import logica.Usuario;
 import java.util.ArrayList;
 public class usuarios {
 	ArrayList<Usuario> Usuarios = new ArrayList<Usuario>();
+	public usuarios() {
+		agregar_usuario("test", "123");
+	}
 
 	public void agregar_usuario(String usuario, String contra ) {
 		Usuarios.add(new Usuario(usuario, contra));
