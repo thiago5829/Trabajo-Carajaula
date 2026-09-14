@@ -97,8 +97,13 @@ public class interfaz {
 		titulo.setBounds(285,25,400,100);
 		ventana.add(titulo);
 		//Botones
-		JButton registrarse = new JButton ("¿QUE FIGURITA TENGO?");
-		registrarse.setBounds(75,170,175,25);
-		ventana.add(registrarse);
+		JButton quefigurita = new JButton ("¿QUE FIGURITA TENGO?");
+		quefigurita.setBounds(75,170,175,25);
+		ventana.add(quefigurita);
+		quefigurita.addActionListener(new ActionListener() {
+			public void actionPerformed (ActionEvent e) {
+				JOptionPane.showMessageDialog(quefigurita, "Usuario registrado con éxito");
+			}
+	});
 	}
-	}
+}
