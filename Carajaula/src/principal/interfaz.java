@@ -102,7 +102,7 @@ public class interfaz {
 		ventana.add(quefigurita);
 		quefigurita.addActionListener(new ActionListener() {
 			public void actionPerformed (ActionEvent e) {
-				JOptionPane.showMessageDialog(quefigurita, "Usuario registrado con éxito");
+				JOptionPane.showMessageDialog(quefigurita, "tus figuritas pegadas son:s");
 			}
 	});
 	}
