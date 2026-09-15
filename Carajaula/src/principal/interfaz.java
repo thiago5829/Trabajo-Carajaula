@@ -5,10 +5,14 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 import logica.usuarios;
 import logica.Usuario;
+import logica.figuritas;
+import logica.figurita;
+import java.util.ArrayList;
 import java.awt.Image;
 public class interfaz {
 	JFrame ventana;
 	usuarios listaUsuarios = new usuarios();
+	figuritas listaFiguritas = new figuritas();
 	public interfaz() {
 		ventana = new JFrame();
 	}
@@ -92,28 +96,43 @@ public class interfaz {
 		ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		ventana.setLocationRelativeTo(null);
 		ventana.setVisible(visible);
+		//Imagen
+		ImageIcon imagenOriginal = new ImageIcon(getClass().getResource("/img/AlbumMafia.png"));
+		Image imagenEscalada = imagenOriginal.getImage().getScaledInstance(200, 200, Image.SCALE_SMOOTH);
+		ImageIcon imagenFinal = new ImageIcon(imagenEscalada);
+		JLabel etiquetaLogo = new JLabel(imagenFinal);
+		etiquetaLogo.setBounds(375, 150, 200, 200);
+		ventana.add(etiquetaLogo);
 		//Encabezados
 	    String []columnas= {"Número figurita","Estado"};
-	    //Datos
-	    String [][]datos= {
-	    		{"50","Pegada"},
-	    			{"51","No pegada"}
-	    };
-	    
-	    JTable tabla = new JTable(datos,columnas);
-	    JScrollPane panel = new JScrollPane(tabla);
 		//Titulo
 		JLabel titulo = new JLabel("ELIGE UNA OPCIÓN");
 		titulo.setBounds(285,25,400,100);
 		ventana.add(titulo);
 		//Botones
 		JButton quefigurita = new JButton ("¿QUE FIGURITA TENGO?");
-		quefigurita.setBounds(75,170,175,25);
+		quefigurita.setBounds(75,150,175,25);
 		ventana.add(quefigurita);
 		quefigurita.addActionListener(new ActionListener() {
 			public void actionPerformed (ActionEvent e) {
+				//Datos: se arman a partir del ArrayList de figuritas
+				ArrayList<figurita> figus = listaFiguritas.getListaFiguritas();
+				String [][]datos= new String[figus.size()][2];
+				for (int i = 0; i < figus.size(); i++) {
+					figurita f = figus.get(i);
+					datos[i][0] = String.valueOf(f.getNumero_figu());
+					datos[i][1] = f.isPegada() ? "Pegada" : "No pegada";
+				}
+				JTable tabla = new JTable(datos,columnas);
+				JScrollPane panel = new JScrollPane(tabla);
 				JOptionPane.showMessageDialog(quefigurita, panel);
 			}
 	});
+		JButton agregarfigu = new JButton ("AGREGAR FIGURITA");
+		agregarfigu.setBounds(75,250,175,25);
+		ventana.add(agregarfigu);
+		JButton quitarfigu = new JButton ("QUITAR FIGURITA");
+		quitarfigu.setBounds(75,350,175,25);
+		ventana.add(quitarfigu);
 	}
 }
