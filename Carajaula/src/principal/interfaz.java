@@ -78,6 +78,10 @@ public class interfaz {
 				public void actionPerformed (ActionEvent e) {
 					String usuario = zonausuario.getText();
 					String contra = zonacontra.getText();
+					if (contra.length() < 8) {
+						JOptionPane.showMessageDialog(registrarse, "La contraseña debe tener al menos 8 caracteres");
+						return;
+					}
 					listaUsuarios.agregar_usuario(usuario, contra);
 					JOptionPane.showMessageDialog(registrarse, "Usuario registrado con éxito");
 		}
