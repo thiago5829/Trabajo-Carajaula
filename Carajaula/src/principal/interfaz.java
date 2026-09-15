@@ -98,10 +98,10 @@ public class interfaz {
 		ventana.setVisible(visible);
 		//Imagen
 		ImageIcon imagenOriginal = new ImageIcon(getClass().getResource("/img/AlbumMafia.png"));
-		Image imagenEscalada = imagenOriginal.getImage().getScaledInstance(200, 200, Image.SCALE_SMOOTH);
+		Image imagenEscalada = imagenOriginal.getImage().getScaledInstance(350, 350, Image.SCALE_SMOOTH);
 		ImageIcon imagenFinal = new ImageIcon(imagenEscalada);
 		JLabel etiquetaLogo = new JLabel(imagenFinal);
-		etiquetaLogo.setBounds(375, 150, 200, 200);
+		etiquetaLogo.setBounds(325, 100, 350, 350);
 		ventana.add(etiquetaLogo);
 		//Encabezados
 	    String []columnas= {"Número figurita","Estado"};
