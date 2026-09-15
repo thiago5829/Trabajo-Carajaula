@@ -92,6 +92,16 @@ public class interfaz {
 		ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		ventana.setLocationRelativeTo(null);
 		ventana.setVisible(visible);
+		//Encabezados
+	    String []columnas= {"Número figurita","Estado"};
+	    //Datos
+	    String [][]datos= {
+	    		{"50","Pegada"},
+	    			{"51","No pegada"}
+	    };
+	    
+	    JTable tabla = new JTable(datos,columnas);
+	    JScrollPane panel = new JScrollPane(tabla);
 		//Titulo
 		JLabel titulo = new JLabel("ELIGE UNA OPCIÓN");
 		titulo.setBounds(285,25,400,100);
@@ -102,7 +112,7 @@ public class interfaz {
 		ventana.add(quefigurita);
 		quefigurita.addActionListener(new ActionListener() {
 			public void actionPerformed (ActionEvent e) {
-				JOptionPane.showMessageDialog(quefigurita, "tus figuritas pegadas son:s");
+				JOptionPane.showMessageDialog(quefigurita, panel);
 			}
 	});
 	}
