@@ -8,7 +8,7 @@ public class Usuario {
 	public Usuario (String user, String contra) {
 		this.nomusuarios=user;
 		this.contraseña=contra;
-		this.misFiguritas = new figuritas(); // cada usuario arranca con su propio álbum, todo sin pegar
+		this.misFiguritas = new figuritas(); // cada usuario arranca con su propio álbum
 	}
 
 	public figuritas getMisFiguritas() {

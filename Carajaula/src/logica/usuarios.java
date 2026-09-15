@@ -5,7 +5,7 @@ public class usuarios {
 	ArrayList<Usuario> Usuarios = new ArrayList<Usuario>();
 	public usuarios() {
 		agregar_usuario("test", "123");
-		// El usuario de prueba arranca con la figurita 67 ya pegada
+		// El usuario arranca con una figurita pegada
 		Usuario test = buscarUsuario("test");
 		test.getMisFiguritas().buscarFigurita(67).setPegada(true);
 	}

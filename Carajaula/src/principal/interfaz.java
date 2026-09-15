@@ -58,7 +58,7 @@ public class interfaz {
 			public void actionPerformed (ActionEvent e) {
 				String usuario = zonausuario.getText();
 				String contra = zonacontra.getText();
-			//Buscar usuario y contraseña en el Array de Usuario
+			//Buscar usuario y contraseña
 				Usuario u = listaUsuarios.buscarUsuario(usuario);
 				if (u == null) {
 					JOptionPane.showMessageDialog(iniciar_sesion, "Usuario no registrado");
