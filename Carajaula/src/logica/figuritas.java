@@ -14,4 +14,14 @@ public class figuritas {
 		public ArrayList<figurita> getListaFiguritas() {
 			return listaFiguritas;
 		}
+
+		// Busca una figurita por su número dentro de esta lista
+		public figurita buscarFigurita(int numero) {
+			for (figurita f : listaFiguritas) {
+				if (f.getNumero_figu() == numero) {
+					return f;
+				}
+			}
+			return null;
+		}
 }

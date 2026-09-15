@@ -12,7 +12,6 @@ import java.awt.Image;
 public class interfaz {
 	JFrame ventana;
 	usuarios listaUsuarios = new usuarios();
-	figuritas listaFiguritas = new figuritas();
 	public interfaz() {
 		ventana = new JFrame();
 	}
@@ -115,8 +114,8 @@ public class interfaz {
 		ventana.add(quefigurita);
 		quefigurita.addActionListener(new ActionListener() {
 			public void actionPerformed (ActionEvent e) {
-				//Datos: se arman a partir del ArrayList de figuritas
-				ArrayList<figurita> figus = listaFiguritas.getListaFiguritas();
+				//Datos: se arman a partir del ArrayList de figuritas del usuario activo
+				ArrayList<figurita> figus = usuarioActivo.getMisFiguritas().getListaFiguritas();
 				String [][]datos= new String[figus.size()][2];
 				for (int i = 0; i < figus.size(); i++) {
 					figurita f = figus.get(i);
@@ -131,8 +130,44 @@ public class interfaz {
 		JButton agregarfigu = new JButton ("AGREGAR FIGURITA");
 		agregarfigu.setBounds(75,250,175,25);
 		ventana.add(agregarfigu);
+		agregarfigu.addActionListener(new ActionListener() {
+			public void actionPerformed (ActionEvent e) {
+				String input = JOptionPane.showInputDialog(agregarfigu, "Número de figurita que pegaste:");
+				if (input == null) return; // el usuario canceló
+				try {
+					int numero = Integer.parseInt(input.trim());
+					figurita f = usuarioActivo.getMisFiguritas().buscarFigurita(numero);
+					if (f == null) {
+						JOptionPane.showMessageDialog(agregarfigu, "No existe la figurita " + numero);
+					} else {
+						f.setPegada(true);
+						JOptionPane.showMessageDialog(agregarfigu, "Figurita " + numero + " marcada pegada");
+					}
+				} catch (NumberFormatException ex) {
+					JOptionPane.showMessageDialog(agregarfigu, "Ingresá un número válido");
+				}
+			}
+		});
 		JButton quitarfigu = new JButton ("QUITAR FIGURITA");
 		quitarfigu.setBounds(75,350,175,25);
 		ventana.add(quitarfigu);
+		quitarfigu.addActionListener(new ActionListener() {
+			public void actionPerformed (ActionEvent e) {
+				String input = JOptionPane.showInputDialog(quitarfigu, "Número de figurita a quitar:");
+				if (input == null) return; // el usuario canceló
+				try {
+					int numero = Integer.parseInt(input.trim());
+					figurita f = usuarioActivo.getMisFiguritas().buscarFigurita(numero);
+					if (f == null) {
+						JOptionPane.showMessageDialog(quitarfigu, "No existe la figurita " + numero);
+					} else {
+						f.setPegada(false);
+						JOptionPane.showMessageDialog(quitarfigu, "Figurita " + numero + " marcada como no pegada");
+					}
+				} catch (NumberFormatException ex) {
+					JOptionPane.showMessageDialog(quitarfigu, "Ingresá un número válido");
+				}
+			}
+		});
 	}
 }
