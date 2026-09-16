@@ -15,7 +15,10 @@ public class interfaz {
 	public interfaz() {
 		ventana = new JFrame();
 	}
-	public void ventanaprincipal() {
+	public void ventanaprincipal(boolean visible) {
+		ventana.getContentPane().removeAll();
+	    ventana.revalidate();
+	    ventana.repaint();
 		//Ventana
 		ventana.setTitle("Gestion de figuritas");
 		ventana.setSize(750,500);
@@ -86,7 +89,7 @@ public class interfaz {
 					JOptionPane.showMessageDialog(registrarse, "Usuario registrado con éxito");
 		}
 	});
-			ventana.setVisible(true);
+			ventana.setVisible(visible);
 	}
 	public void ventana2(boolean visible, usuarios listaUsuarios, Usuario usuarioActivo) {
 		ventana.getContentPane().removeAll();
@@ -156,7 +159,7 @@ public class interfaz {
 		quitarfigu.setBounds(75,350,175,25);
 		ventana.add(quitarfigu);
 		quitarfigu.addActionListener(new ActionListener() {
-			public void actionPerformed (ActionEvent e) {
+			public void actionPerformed(ActionEvent e) {
 				String input = JOptionPane.showInputDialog(quitarfigu, "Número de figurita a quitar:");
 				if (input == null) return; // el usuario canceló
 				try {
@@ -171,6 +174,15 @@ public class interfaz {
 				} catch (NumberFormatException ex) {
 					JOptionPane.showMessageDialog(quitarfigu, "Ingresá un número válido");
 				}
+			}
+		});
+		JButton cerrarsesion = new JButton ("Cerrar Sesión");
+		cerrarsesion.setBounds(600,400,120,25);
+		ventana.add(cerrarsesion);
+		cerrarsesion.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ventana.setVisible(false);
+			    ventanaprincipal(true);
 			}
 		});
 	}
