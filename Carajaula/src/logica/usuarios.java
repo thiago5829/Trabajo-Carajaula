@@ -14,7 +14,7 @@ public class usuarios {
 		return usuarioDAO.insertar(usuario, contra);
 	}
 
-	// Busca el usuario en la base (con sus figuritas). null si no existe.
+	// Busca el usuario en la base (con sus figuritas).
 	public Usuario buscarUsuario(String usuario) throws SQLException {
 		return usuarioDAO.buscar(usuario);
 	}
