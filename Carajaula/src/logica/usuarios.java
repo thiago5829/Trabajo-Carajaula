@@ -1,35 +1,41 @@
 package logica;
-import logica.Usuario;
-import java.util.ArrayList;
+
+import java.sql.SQLException;
+
+import persistencia.FiguritaDAO;
+import persistencia.UsuarioDAO;
+
 public class usuarios {
-	ArrayList<Usuario> Usuarios = new ArrayList<Usuario>();
-	public usuarios() {
-		agregar_usuario("test", "123");
-		// El usuario arranca con una figurita pegada
-		Usuario test = buscarUsuario("test");
-		test.getMisFiguritas().buscarFigurita(67).setPegada(true);
+	private UsuarioDAO usuarioDAO = new UsuarioDAO();
+	private FiguritaDAO figuritaDAO = new FiguritaDAO();
+
+	// Registra el usuario en la base. Devuelve false si ya existe.
+	public boolean agregar_usuario(String usuario, String contra) throws SQLException {
+		return usuarioDAO.insertar(usuario, contra);
 	}
 
-	public void agregar_usuario(String usuario, String contra ) {
-		Usuarios.add(new Usuario(usuario, contra));
+	// Busca el usuario en la base (con sus figuritas). null si no existe.
+	public Usuario buscarUsuario(String usuario) throws SQLException {
+		return usuarioDAO.buscar(usuario);
 	}
 
-	// Busca el usuario en la lista
-	public Usuario buscarUsuario(String usuario) {
-		for (int i = 0; i < Usuarios.size(); i++) {
-			if (Usuarios.get(i).getUsuarios().equals(usuario)) {
-				return Usuarios.get(i);
-			}
-		}
-		return null;
-	}
-
-	// Revisa si el usuario existe y si la contraseña coincide con la registrada
-	public boolean validarLogin(String usuario, String contra) {
+	public boolean validarLogin(String usuario, String contra) throws SQLException {
 		Usuario u = buscarUsuario(usuario);
 		if (u == null) {
 			return false;
 		}
 		return u.getContraseña().equals(contra);
+	}
+
+	// Pega o quita una figurita: actualiza la base y la lista en memoria.
+	// Devuelve false si la figurita no existe en el álbum.
+	public boolean marcarPegada(Usuario u, int numero, boolean pegada) throws SQLException {
+		figurita f = u.getMisFiguritas().buscarFigurita(numero);
+		if (f == null) {
+			return false;
+		}
+		figuritaDAO.setPegada(u.getUsuarios(), numero, pegada);
+		f.setPegada(pegada);
+		return true;
 	}
 }
