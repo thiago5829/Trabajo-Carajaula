@@ -1,0 +1,31 @@
+CREATE DATABASE IF NOT EXISTS carajaula CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE carajaula;
+
+CREATE TABLE IF NOT EXISTS usuarios (
+    nombre     VARCHAR(50)  NOT NULL PRIMARY KEY,
+    contrasena VARCHAR(100) NOT NULL
+) ENGINE=InnoDB;
+
+CREATE TABLE IF NOT EXISTS figuritas (
+    numero    INT          NOT NULL PRIMARY KEY,
+    seleccion VARCHAR(100) NOT NULL
+) ENGINE=InnoDB;
+
+CREATE TABLE IF NOT EXISTS usuario_figurita (
+    usuario VARCHAR(50) NOT NULL,
+    numero  INT         NOT NULL,
+    PRIMARY KEY (usuario, numero),
+    FOREIGN KEY (usuario) REFERENCES usuarios(nombre) ON DELETE CASCADE,
+    FOREIGN KEY (numero)  REFERENCES figuritas(numero)
+) ENGINE=InnoDB;
+
+-- Carga las figuritas 0 a 980
+INSERT IGNORE INTO figuritas (numero, seleccion)
+WITH RECURSIVE n(i) AS (
+    SELECT 0 UNION ALL SELECT i + 1 FROM n WHERE i < 980
+)
+SELECT i, CONCAT('Figurita ', i) FROM n;
+
+-- Usuario de prueba
+INSERT IGNORE INTO usuarios (nombre, contrasena) VALUES ('test', '123');
+INSERT IGNORE INTO usuario_figurita (usuario, numero) VALUES ('test', 67);
